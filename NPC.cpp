@@ -6,10 +6,10 @@ void MerchantNPC::interact(Traveller* context) {
     if (!context) return; 
 
     std::cout << "[Desert] A wandering Merchant offers to trade!" << std::endl;
-    std::cout << "         'I'll buy your map data for $150!'" << std::endl;
+    std::cout << "         'I'll buy your map data for R150!'" << std::endl;
     
     context->setMoney(context->getMoney() + 150.0);
-    std::cout << "[System] Money increased to $" << context->getMoney() << "." << std::endl;
+    std::cout << "[System] Money increased to R" << context->getMoney() << "." << std::endl;
 }
 
 void MermaidNPC::interact(Traveller* context) {

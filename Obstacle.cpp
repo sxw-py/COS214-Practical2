@@ -40,7 +40,7 @@ bool ThicketObstacle::overcome(Traveller* context) {
     
     
     if (context->getMoney() >= 20.0) {
-        std::cout << "         You pay a local $20 to help clear the thicket." << std::endl;
+        std::cout << "         You pay a local R20 to help clear the thicket." << std::endl;
         context->setMoney(context->getMoney() - 20.0);
         return true;
     } else if (context->getStamina() >= 25) {

@@ -4,7 +4,7 @@ CXX = g++
 CXXFLAGS = -std=c++11 -Wall -Wextra -Wpedantic -Werror -g
 
 # Target executable name
-TARGET = wayfarer_factory
+TARGET = wayfarer
 
 # Grab all .cpp files automatically
 SRCS = $(wildcard *.cpp)
