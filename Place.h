@@ -1,6 +1,6 @@
 #ifndef PLACE_H
 #define PLACE_H
-
+#include <vector>
 #include <string>
 
 class Place {
@@ -18,6 +18,10 @@ public:
     std::string getName() const { return name; }
     
     virtual void traverse() = 0; 
+    virtual std::vector<Place*> getNeighbours() const = 0;
+    virtual double getDistanceTo(Place* other) const = 0;
+    virtual double getTravelTimeTo(Place* other) const = 0;
+    virtual double getCostTo(Place* other) const = 0;
 };
 
 #endif 
