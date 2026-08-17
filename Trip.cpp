@@ -1,6 +1,6 @@
 #include "Trip.h"
 
-Trip::Trip(Place* start, Place* end) : start(start), end(end), route(nullptr){}
+Trip::Trip(Place* start, Place* end) : route(nullptr), start(start), end(end){}
 
 void Trip::setStrategy(RouteStrategy* newStrategy){
     delete route;

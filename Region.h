@@ -20,6 +20,12 @@ public:
     // Only the Region has the physical ability to manage children
     void add(Place* child);
     void remove(Place* child);
+
+    // Regions are composites, not graph nodes — return sensible defaults
+    std::vector<Place*> getNeighbours() const override;
+    double getDistanceTo(Place* other) const override;
+    double getTravelTimeTo(Place* other) const override;
+    double getCostTo(Place* other) const override;
 };
 
 #endif 

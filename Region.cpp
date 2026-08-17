@@ -42,3 +42,19 @@ void Region::traverse() {
     
     std::cout << "[Region] Leaving " << this->getName() << ".\n" << std::endl;
 }
+
+std::vector<Place*> Region::getNeighbours() const {
+    return children;
+}
+
+double Region::getDistanceTo(Place* ) const {
+    return 0.0;
+}
+
+double Region::getTravelTimeTo(Place* ) const {
+    return 0.0;
+}
+
+double Region::getCostTo(Place* ) const {
+    return 0.0;
+}
