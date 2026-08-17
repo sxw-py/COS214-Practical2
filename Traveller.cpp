@@ -29,9 +29,9 @@ void Traveller::setMode(TravelMode* newMode) {
     delete oldMode; 
 }
 
-void Traveller::move(int distance) {
+void Traveller::move(int distance,Terrain* currentTerrain) {
     if (this->currentMode) {
-        this->currentMode->move(this, distance);
+        this->currentMode->move(this, distance, currentTerrain);
     }
 }
 

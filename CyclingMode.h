@@ -8,7 +8,7 @@ public:
     CyclingMode() = default;
     ~CyclingMode() override = default;
 
-    void move(Traveller* context, int distance) override;
+    void move(Traveller* context, int distance, Terrain* currentTerrain) override;
     std::string getModeName() const override;
 };
 
