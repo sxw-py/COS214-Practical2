@@ -1,17 +1,22 @@
 #include "CyclingMode.h"
 #include "WalkingMode.h" 
 #include "Traveller.h"
+#include "Terrain.h"
 #include <iostream>
 
-void CyclingMode::move(Traveller* context, int distance) {
-    if (!context) return;
+void CyclingMode::move(Traveller* context, int distance, Terrain* currentTerrain) {
+    if (!context || !currentTerrain) return;
 
-    std::cout << "[Action] Cycling for " << distance << " km." << std::endl;
+int baseCost = 1;
+    int terrainCost = currentTerrain->getMovementCost();
+    int totalStaminaDrain = distance * baseCost * terrainCost;
+
+    std::cout << "[Action] Cycling " << distance << " km through " << currentTerrain->getName() << "." << std::endl;
+    std::cout << "         (Stamina Cost: " << totalStaminaDrain << ")" << std::endl;
     
-    // Cycling is highly efficient, only 1 stamina per km
-    context->setStamina(context->getStamina() - (distance * 1));
+    context->setStamina(context->getStamina() - totalStaminaDrain);
 
-    // If we are completely exhausted, we must get off and walk
+    // Guarded transition
     if (context->getStamina() <= 0) {
         std::cout << "[Transition] Completely exhausted! Falling off the bike and walking." << std::endl;
         context->setMode(new WalkingMode());

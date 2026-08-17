@@ -1,17 +1,22 @@
 #include "DrivingMode.h"
 #include "WalkingMode.h" 
 #include "Traveller.h"
+#include "Terrain.h"
 #include <iostream>
 
-void DrivingMode::move(Traveller* context, int distance) {
-    if (!context) return;
+void DrivingMode::move(Traveller* context, int distance, Terrain* currentTerrain) {
+    if (!context || !currentTerrain) return;
 
-    std::cout << "[Action] Driving for " << distance << " km." << std::endl;
+int baseFuelCost = 2;
+    int terrainCost = currentTerrain->getMovementCost();
+    int totalFuelDrain = distance * baseFuelCost * terrainCost;
+
+    std::cout << "[Action] Driving " << distance << " km through " << currentTerrain->getName() << "." << std::endl;
+    std::cout << "         (Fuel Cost: " << totalFuelDrain << ")" << std::endl;
     
-    // Driving costs 2 fuel per km, but 0 stamina
-    context->setFuel(context->getFuel() - (distance * 2));
+    context->setFuel(context->getFuel() - totalFuelDrain);
 
-    // Must walk if out of fuel
+    // Guarded transition
     if (context->getFuel() <= 0) {
         std::cout << "[Transition] Out of gas! Abandoning the vehicle and walking." << std::endl;
         context->setMode(new WalkingMode());
